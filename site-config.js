@@ -11,11 +11,11 @@ const SITE_CONFIG = {
     nome: '4J Transporte',
     slogan: 'Pontualidade e confiança guiando cada entrega.',
     base: 'Região Metropolitana de Belém – PA',
-    whatsapp: '', // Ex.: 5591999999999
-    email: '', // Ex.: comercial@4jtransporte.com.br
-    telefone: '', // Ex.: (91) 99999-9999
+    whatsapp: '', // Ex.: 5591986208210
+    email: '', // Ex.: 4jtransportes@gmail.com
+    telefone: '', // Ex.: (91) 986208210
     instagram: '', // Ex.: https://instagram.com/4jtransporte
-    endereco: 'Região Metropolitana de Belém – PA'
+    endereco: 'Ponto de Apoio Posto Paravip – PA'
   },
 
   seo: {
@@ -33,9 +33,9 @@ const SITE_CONFIG = {
   },
 
   frota: [
-    { quantidade: 5, nome: 'Caminhões', imagem: 'assets/image6.jpg' },
+    { quantidade: 5, nome: 'Trucks', imagem: 'assets/image6.jpg' },
     { quantidade: 6, nome: 'Bitrens graneleiros', imagem: 'assets/image1.jpg' },
-    { quantidade: 1, nome: 'Carreta baú', imagem: 'assets/image15.jpg' },
+    { quantidade: 4, nome: 'Carreta baú', imagem: 'assets/image15.jpg' },
     { quantidade: 2, nome: 'Bitrucks', imagem: 'assets/image2.jpg' }
   ],
 
