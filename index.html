@@ -1,19 +1,199 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="4J Transporte | Pontualidade e confiança guiando cada entrega" />
-    <title>4J Transporte</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="app"></div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="siteTitle"></title>
+<meta id="siteDescription" name="description" content="">
+<meta name="theme-color" content="#07111f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06101d;--bg2:#0b1726;--panel:#101f31;--panel2:#0d1b2d;--red:#e21b2d;--red2:#ff3a4a;--white:#fff;--text:#e8edf3;--muted:#91a0b0;--line:rgba(255,255,255,.1);--max:1220px;--radius:18px;--shadow:0 25px 70px rgba(0,0,0,.28)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.55}body.no-scroll{overflow:hidden}a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}.container{width:min(calc(100% - 40px),var(--max));margin:auto}.section{padding:105px 0}.kicker{color:#ff4a58;text-transform:uppercase;letter-spacing:2.6px;font-size:11px;font-weight:900}.title{font-size:clamp(34px,4.5vw,58px);line-height:1.02;letter-spacing:-2.6px;margin:12px 0 0;color:#fff}.lead{color:var(--muted);max-width:580px;font-size:15px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:46px}
+/* NAV */
+.nav{position:fixed;z-index:100;top:0;left:0;right:0;border-bottom:1px solid transparent;transition:.25s}.nav.scrolled{background:rgba(5,14,25,.9);backdrop-filter:blur(18px);border-color:var(--line)}.navin{height:78px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:24px;font-weight:900;letter-spacing:-1.5px}.brand span{color:var(--red)}.links{display:flex;gap:27px;font-size:12px;font-weight:700;color:#cbd5df}.links a{position:relative}.links a:after{content:"";position:absolute;left:0;bottom:-9px;width:0;height:2px;background:var(--red);transition:.2s}.links a:hover:after{width:100%}.nav-actions{display:flex;align-items:center;gap:10px}.navcta,.btn{border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;letter-spacing:.4px;border-radius:10px;padding:13px 18px}.navcta,.btn.primary{background:var(--red);color:#fff;box-shadow:0 12px 28px rgba(226,27,45,.22)}.btn.primary:hover,.navcta:hover{background:var(--red2);transform:translateY(-1px)}.menu{display:none;background:none;border:1px solid var(--line);color:#fff;border-radius:10px;padding:10px 12px;cursor:pointer}
+/* HERO */
+.hero{min-height:790px;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(3,9,17,.97) 0%,rgba(3,9,17,.83) 38%,rgba(3,9,17,.3) 76%,rgba(3,9,17,.15) 100%),url('assets/image6.jpg') center/cover}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 35%,rgba(226,27,45,.18),transparent 28%)}.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:180px;background:linear-gradient(transparent,var(--bg))}.hero-content{position:relative;z-index:2;padding-top:80px;max-width:790px}.hero .kicker{margin-bottom:20px}.hero h1{font-size:clamp(48px,7vw,88px);line-height:.97;letter-spacing:-4px;margin:0 0 28px;font-weight:900}.hero h1 em{font-style:normal;color:var(--red)}.hero p{font-size:18px;color:#ccd6e0;max-width:690px;margin:0 0 35px}.buttons{display:flex;gap:12px;flex-wrap:wrap}.btn.secondary{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#fff}.btn.secondary:hover{background:rgba(255,255,255,.1)}.hero-badge{display:flex;gap:14px;align-items:center;margin-top:36px;color:#aebac6;font-size:12px}.hero-badge i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.2);font-style:normal;color:#ff4a58}
+/* STATS */
+.stats-wrap{position:relative;z-index:5;margin-top:-45px}.stats{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(13,27,45,.95);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);backdrop-filter:blur(10px)}.stat{padding:28px 30px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat strong{display:block;font-size:43px;letter-spacing:-2.5px;color:#fff}.stat span{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);font-weight:800}
+/* CARDS */
+.services{background:linear-gradient(180deg,var(--bg),var(--bg2))}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:linear-gradient(145deg,#102238,#0d1b2d);border:1px solid var(--line);border-radius:var(--radius);padding:28px;min-height:235px;position:relative;overflow:hidden;transition:.28s}.card:before{content:"";position:absolute;right:-50px;top:-50px;width:130px;height:130px;border-radius:50%;background:rgba(226,27,45,.09)}.card:hover{transform:translateY(-7px);border-color:rgba(226,27,45,.55);box-shadow:var(--shadow)}.num{color:#ff4a58;font-size:11px;font-weight:900;letter-spacing:1px}.card h3{margin:50px 0 10px;font-size:19px}.card p{margin:0;color:var(--muted);font-size:13px}
+/* FLEET */
+.fleet{background:#07121f}.fleetgrid{display:grid;grid-template-columns:1.12fr .88fr;gap:18px}.photo{min-height:520px;background-size:cover;background-position:center;border-radius:var(--radius);position:relative;overflow:hidden;cursor:pointer}.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78),rgba(0,0,0,.02) 65%)}.photo:hover{box-shadow:var(--shadow)}.photo-label{position:absolute;z-index:2;left:25px;right:20px;bottom:23px}.photo-label strong{display:block;font-size:23px}.photo-label span{font-size:12px;color:#c3ccd6}.mini{display:grid;grid-template-columns:1fr 1fr;gap:18px}.mini .photo{min-height:251px}.gallery-note{margin-top:16px;color:var(--muted);font-size:12px}
+/* SECURITY */
+.security{background:var(--bg2)}.securitygrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px}.security-visual{min-height:470px;border-radius:var(--radius);background:linear-gradient(160deg,rgba(226,27,45,.16),transparent 45%),url('assets/image8.jpg') center/cover;position:relative;overflow:hidden}.security-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,10,18,.8),transparent 60%)}.security-visual .overlay{position:absolute;z-index:2;left:28px;bottom:25px}.overlay strong{font-size:25px;display:block}.overlay span{color:#bac5cf;font-size:12px}.checks{padding-top:3px}.check{display:flex;gap:17px;padding:20px 0;border-bottom:1px solid var(--line)}.check:last-child{border-bottom:0}.icon{width:36px;height:36px;border-radius:50%;border:1px solid rgba(226,27,45,.55);color:#ff5260;display:grid;place-items:center;flex:none;font-weight:900}.check b{font-size:15px}.check p{margin:4px 0 0;color:var(--muted);font-size:13px}
+/* AREAS */
+.areas{background:var(--bg)}.mapbox{border:1px solid var(--line);border-radius:var(--radius);background:radial-gradient(circle at 15% 20%,rgba(226,27,45,.13),transparent 24%),linear-gradient(145deg,#0e1d30,#0a1625);padding:40px;overflow:hidden}.route{display:flex;align-items:center;gap:12px;margin:22px 0 30px;flex-wrap:wrap}.route .node{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:999px;padding:11px 16px;font-weight:800}.node i{width:8px;height:8px;background:var(--red);border-radius:50%;display:block}.route .arrow{color:var(--red);font-weight:900}.regions{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.region{padding:24px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}.region strong{display:block;font-size:40px;letter-spacing:-2px;color:var(--red)}.region h3{margin:5px 0}.region p{color:var(--muted);font-size:13px;margin:0}
+/* WHY */
+.why{background:linear-gradient(180deg,var(--bg),#091624)}.whygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.whyitem{padding:28px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#0e1e31,#0b1726);position:relative}.whyitem:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;border-radius:14px 14px 0 0;background:var(--red)}.whyitem .big{font-size:30px;font-weight:900;color:#fff;margin-bottom:24px}.whyitem h3{margin:0 0 8px}.whyitem p{color:var(--muted);font-size:13px;margin:0}
+/* QUOTE */
+.quote{background:#091625}.quote-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:30px;align-items:stretch}.quote-copy{border-radius:var(--radius);padding:40px;background:linear-gradient(145deg,#111f31,#0c1726);border:1px solid var(--line)}.quote-copy h2{font-size:clamp(34px,4vw,54px);line-height:1;letter-spacing:-2.5px;margin:12px 0 18px}.quote-copy p{color:var(--muted)}.contact-list{margin-top:30px;display:grid;gap:12px}.contact-list div{padding:14px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.025);font-size:13px}.quote-form{border-radius:var(--radius);padding:34px;background:#fff;color:#101722}.quote-form h3{margin:0 0 5px;font-size:24px}.quote-form .sub{color:#66717d;font-size:12px;margin-bottom:22px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.7px;color:#4e5965}.field input,.field textarea,.field select{width:100%;border:1px solid #d9dee5;border-radius:9px;padding:12px 13px;outline:none;background:#fbfcfd;color:#111820}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(226,27,45,.08)}.field textarea{min-height:105px;resize:vertical}.submit{width:100%;margin-top:16px;padding:15px;background:var(--red);color:#fff;border:0;border-radius:10px;font-weight:900;cursor:pointer}.form-note{font-size:10px;color:#7a8490;margin-top:10px}
+/* CTA + FOOTER */
+.cta{padding:80px 0;background:linear-gradient(105deg,#8e111b,#e21b2d 60%,#b70f1c)}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:30px}.cta h2{font-size:clamp(32px,4.2vw,56px);line-height:1;letter-spacing:-2.5px;margin:0}.cta p{color:#ffe2e5;margin:12px 0 0}.btn.light{background:#fff;color:#10151c}.footer{padding:40px 0;background:#040a12;border-top:1px solid var(--line)}.foot{display:flex;justify-content:space-between;gap:30px}.foot strong{color:#fff}.foot p{margin:7px 0 0;color:#788796;font-size:12px}.foot-links{display:flex;gap:22px;font-size:12px;color:#9aa6b2}.copyright{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);color:#667482;font-size:10px}
+/* FLOAT + LIGHTBOX + REVEAL */
+.float-wa{position:fixed;z-index:90;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#18a86b;color:#fff;font-weight:900;box-shadow:0 15px 35px rgba(0,0,0,.35);font-size:19px}.float-wa:hover{transform:translateY(-3px)}.reveal{opacity:0;transform:translateY(22px);transition:.7s ease}.reveal.visible{opacity:1;transform:none}.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:200;display:none;align-items:center;justify-content:center;padding:25px}.lightbox.open{display:flex}.lightbox img{max-width:min(1100px,94vw);max-height:86vh;border-radius:12px;box-shadow:var(--shadow)}.close{position:absolute;right:25px;top:20px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.3);color:#fff;width:42px;height:42px;border-radius:50%;font-size:24px;cursor:pointer}
+/* RESPONSIVE */
+@media(max-width:980px){.links{display:none}.menu{display:block}.nav-actions .navcta{display:none}.stats,.grid4,.whygrid{grid-template-columns:1fr 1fr}.fleetgrid,.securitygrid,.quote-grid{grid-template-columns:1fr}.security-visual{min-height:390px}.cta-in{align-items:flex-start;flex-direction:column}.section-head{display:block}.section-head .lead{margin-top:17px}.hero{min-height:730px}.regions{grid-template-columns:1fr}}
+@media(max-width:620px){.container{width:min(calc(100% - 28px),var(--max))}.section{padding:80px 0}.hero h1{letter-spacing:-2.8px;font-size:49px}.hero p{font-size:16px}.stats,.grid4,.whygrid,.formgrid{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line)}.stat:last-child{border-bottom:0}.fleetgrid .photo{min-height:380px}.mini{grid-template-columns:1fr}.mini .photo{min-height:280px}.mapbox,.quote-copy,.quote-form{padding:25px}.foot{flex-direction:column}.foot-links{flex-wrap:wrap}.float-wa{right:15px;bottom:15px}}
+</style>
+</head>
+<body>
+<header class="nav" id="top"><div class="container navin">
+<a class="brand" href="#inicio">4J<span>.</span>TRANSPORTE</a>
+<nav class="links" aria-label="Principal"><a href="#servicos">Serviços</a><a href="#frota">Frota</a><a href="#seguranca">Segurança</a><a href="#atuacao">Atuação</a><a href="#contato">Contato</a></nav>
+<div class="nav-actions"><a class="navcta" href="#cotacao">SOLICITAR COTAÇÃO</a><button class="menu" id="menuBtn" aria-label="Abrir menu">☰</button></div>
+</div></header>
 
-    <script src="site-config.js"></script>
-    <script src="script.js"></script>
-  </body>
+<main>
+<section class="hero" id="inicio"><div class="container hero-content reveal">
+<div class="kicker" data-config="hero.kicker"></div>
+<h1><span data-config="hero.tituloLinha1"></span><br><em data-config="hero.tituloDestaque"></em></h1>
+<p data-config="hero.texto"></p>
+<div class="buttons"><a class="btn primary" href="#cotacao">SOLICITAR COTAÇÃO →</a><a class="btn secondary" href="#frota">CONHECER A FROTA</a></div>
+<div class="hero-badge"><i>✓</i> <span data-config="hero.badge"></span></div>
+</div></section>
+
+<div class="container stats-wrap"><div class="stats reveal" id="statsList"></div>
+</div></div>
+
+<section class="section services" id="servicos"><div class="container"><div class="section-head reveal"><div><div class="kicker">01 • Nossos serviços</div><h2 class="title" data-config="textos.servicosTitulo"></h2></div><p class="lead" data-config="textos.servicosLead"></p></div>
+<div class="grid4" id="servicesList"></div></div></section>
+
+<section class="section fleet" id="frota"><div class="container"><div class="section-head reveal"><div><div class="kicker">02 • Nossa frota</div><h2 class="title" data-config="textos.frotaTitulo"></h2></div><p class="lead" data-config="textos.frotaLead"></p></div>
+<div class="fleetgrid" id="galleryList"></div><div class="gallery-note">Clique nas imagens para ampliar.</div></div></section>
+
+<section class="section security" id="seguranca"><div class="container"><div class="securitygrid"><div class="security-visual reveal"><div class="overlay"><strong>Controle em cada etapa.</strong><span>Processos e recursos voltados para segurança e qualidade.</span></div></div><div class="reveal"><div class="kicker">03 • Segurança e controle</div><h2 class="title" data-config="textos.segurancaTitulo"></h2><p class="lead" style="margin-top:20px" data-config="textos.segurancaLead"></p><div class="checks" id="securityList"></div></div></div></div></section>
+
+<section class="section areas" id="atuacao"><div class="container"><div class="section-head reveal"><div><div class="kicker">04 • Onde atuamos</div><h2 class="title" data-config="textos.atuacaoTitulo"></h2></div><p class="lead" data-config="textos.atuacaoLead"></p></div>
+<div class="mapbox reveal"><div class="kicker">Corredor de atuação</div><div class="route" id="routeList"></div><div class="regions" id="regionsList"></div>
+</div></div></div></section>
+
+<section class="section why"><div class="container"><div class="section-head reveal"><div><div class="kicker">05 • Por que a 4J</div><h2 class="title" data-config="textos.porqueTitulo"></h2></div><p class="lead" data-config="textos.porqueLead"></p></div>
+<div class="whygrid" id="whyList"></div></div></section>
+
+<section class="section quote" id="cotacao"><div class="container quote-grid"><div class="quote-copy reveal"><div class="kicker">06 • Conexão</div><h2 data-config="textos.cotacaoTitulo"></h2><p data-config="textos.cotacaoTexto"></p><div class="contact-list"><div>📍 <strong>Base</strong><br><span data-contact="base"></span></div><div>📲 <strong>WhatsApp</strong><br><span data-contact="whatsapp"></span></div><div>✉️ <strong>E-mail</strong><br><span data-contact="email"></span></div></div></div>
+<form class="quote-form reveal" id="quoteForm"><h3>Solicite uma cotação</h3><div class="sub">Preencha os dados abaixo para preparar sua solicitação.</div><div class="formgrid">
+<div class="field"><label>Nome</label><input name="nome" required placeholder="Seu nome"></div><div class="field"><label>Empresa</label><input name="empresa" required placeholder="Nome da empresa"></div>
+<div class="field"><label>WhatsApp</label><input name="telefone" required placeholder="(00) 00000-0000"></div><div class="field"><label>E-mail</label><input name="email" type="email" placeholder="seu@email.com"></div>
+<div class="field"><label>Origem</label><input name="origem" placeholder="Cidade / UF"></div><div class="field"><label>Destino</label><input name="destino" placeholder="Cidade / UF"></div>
+<div class="field"><label>Tipo de carga</label><select name="carga"><option>Selecione</option><option>Alimentos</option><option>Carga dedicada</option><option>Distribuição</option><option>Outra</option></select></div><div class="field"><label>Peso / quantidade</label><input name="peso" placeholder="Ex.: 30 toneladas"></div>
+<div class="field full"><label>Detalhes da operação</label><textarea name="mensagem" placeholder="Informe frequência, tipo de veículo, prazo, particularidades etc."></textarea></div>
+</div><button class="submit" type="submit">ENVIAR SOLICITAÇÃO →</button><div class="form-note">O formulário está preparado para integração com WhatsApp/e-mail. Antes de publicar, configure os contatos comerciais no código.</div></form>
+</div></section>
+
+<section class="cta"><div class="container cta-in"><div><h2 data-config="textos.ctaTitulo"></h2><p data-config="empresa.slogan"></p></div><a class="btn light" href="#cotacao">FAZER UMA COTAÇÃO</a></div></section>
+</main>
+
+<footer class="footer" id="contato"><div class="container"><div class="foot"><div><strong data-config="empresa.nome"></strong><p data-config="empresa.slogan"></p></div><div class="foot-links"><a href="#servicos">Serviços</a><a href="#frota">Frota</a><a href="#seguranca">Segurança</a><a href="#atuacao">Atuação</a><a href="#cotacao">Cotação</a></div></div><div class="copyright">© <span id="year"></span> <span data-config="empresa.nome"></span>. Todos os direitos reservados.</div></div></footer>
+
+<a class="float-wa" id="floatWhatsapp" href="#cotacao" aria-label="Solicitar cotação">↗</a>
+<div class="lightbox" id="lightbox"><button class="close" id="closeLightbox" aria-label="Fechar">×</button><img id="lightboxImg" src="" alt="Frota 4J Transporte ampliada"></div>
+
+<script src="config.js"></script>
+<script>
+// ==========================================================
+// MOTOR DO SITE — normalmente você NÃO precisa editar aqui.
+// Para alterar informações, use o arquivo config.js.
+// ==========================================================
+const CONFIG = SITE_CONFIG;
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});
+
+function get(obj, path){ return path.split('.').reduce((o,k)=>o?.[k], obj); }
+function setText(selector, value){ const el=document.querySelector(selector); if(el) el.textContent=value ?? ''; }
+
+// SEO
+setText('#siteTitle', CONFIG.seo.titulo);
+document.getElementById('siteDescription')?.setAttribute('content', CONFIG.seo.descricao);
+document.title=CONFIG.seo.titulo;
+
+// Textos simples
+document.querySelectorAll('[data-config]').forEach(el=>{ const value=get(CONFIG, el.dataset.config); if(value!==undefined) el.textContent=value; });
+
+// Hero
+const hero=document.querySelector('.hero');
+if(hero) hero.style.backgroundImage=`linear-gradient(90deg,rgba(3,9,17,.97) 0%,rgba(3,9,17,.83) 38%,rgba(3,9,17,.3) 76%,rgba(3,9,17,.15) 100%),url('${CONFIG.hero.imagem}')`;
+
+// Contatos
+const contactValues={base:CONFIG.empresa.base, whatsapp:CONFIG.empresa.whatsapp?formatPhone(CONFIG.empresa.whatsapp):'Configure o WhatsApp comercial no config.js', email:CONFIG.empresa.email||'Configure o e-mail comercial no config.js'};
+document.querySelectorAll('[data-contact]').forEach(el=>el.textContent=contactValues[el.dataset.contact]||'');
+
+// Estatísticas da frota
+const stats=document.getElementById('statsList');
+if(stats){ stats.innerHTML=CONFIG.frota.map(item=>`<div class="stat"><strong data-count="${item.quantidade}">${item.quantidade}</strong><span>${item.nome}</span></div>`).join(''); }
+
+// Serviços
+const services=document.getElementById('servicesList');
+if(services){ services.innerHTML=CONFIG.servicos.map((item,i)=>`<article class="card reveal"><span class="num">${String(i+1).padStart(2,'0')}</span><h3>${item.titulo}</h3><p>${item.texto}</p></article>`).join(''); services.querySelectorAll('.reveal').forEach(el=>observer.observe(el)); }
+
+// Galeria
+const gallery=document.getElementById('galleryList');
+if(gallery){
+  gallery.innerHTML=CONFIG.galeria.map((item,i)=>`<div class="photo reveal ${i===0?'main-photo':''}" data-image="${item.imagem}" style="background-image:url('${item.imagem}')"><div class="photo-label"><strong>${item.titulo}</strong><span>${item.legenda}</span></div></div>`).join('');
+  // Mantém o layout grande + 4 menores
+  const photos=[...gallery.children];
+  if(photos.length){ const first=photos.shift(); first.classList.add('fleet-main'); const mini=document.createElement('div'); mini.className='mini'; photos.forEach(p=>mini.appendChild(p)); gallery.innerHTML=''; gallery.appendChild(first); gallery.appendChild(mini); }
+  gallery.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+}
+
+// Segurança
+const security=document.getElementById('securityList');
+if(security){ security.innerHTML=CONFIG.seguranca.map(item=>`<div class="check"><div class="icon">✓</div><div><b>${item.titulo}</b><p>${item.texto}</p></div></div>`).join(''); }
+
+// Áreas de atuação
+const route=document.getElementById('routeList');
+if(route){ route.innerHTML=CONFIG.atuacao.map((item,i)=>`${i?'<span class="arrow">→</span>':''}<span class="node"><i></i> ${item.nome.toUpperCase()}</span>`).join(''); }
+const regions=document.getElementById('regionsList');
+if(regions){ regions.innerHTML=CONFIG.atuacao.map(item=>`<div class="region"><strong>${item.sigla}</strong><h3>${item.nome}</h3><p>${item.texto}</p></div>`).join(''); }
+
+// Diferenciais
+const why=document.getElementById('whyList');
+if(why){ why.innerHTML=CONFIG.diferenciais.map((item,i)=>`<div class="whyitem reveal"><div class="big">${String(i+1).padStart(2,'0')}</div><h3>${item.titulo}</h3><p>${item.texto}</p></div>`).join(''); why.querySelectorAll('.reveal').forEach(el=>observer.observe(el)); }
+
+// WhatsApp / telefone / e-mail
+function formatPhone(value){
+  const n=String(value).replace(/\D/g,'');
+  if(n.startsWith('55') && n.length>=12){ const ddd=n.slice(2,4), rest=n.slice(4); return `(${ddd}) ${rest.length===9?rest.slice(0,5)+'-'+rest.slice(5):rest.slice(0,4)+'-'+rest.slice(4)}`; }
+  return value;
+}
+function whatsappUrl(){ return CONFIG.empresa.whatsapp ? `https://wa.me/${String(CONFIG.empresa.whatsapp).replace(/\D/g,'')}` : '#cotacao'; }
+const floatWhatsapp=document.getElementById('floatWhatsapp'); if(floatWhatsapp) floatWhatsapp.href=whatsappUrl();
+
+const nav=document.querySelector('.nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));
+
+// Menu mobile
+const menuBtn=document.getElementById('menuBtn');
+menuBtn?.addEventListener('click',()=>{
+  const links=document.querySelector('.links'); const open=links.dataset.open==='1';
+  if(!open){links.dataset.open='1';links.style.cssText='display:flex;position:fixed;top:78px;left:0;right:0;padding:24px;flex-direction:column;background:rgba(5,14,25,.98);border-bottom:1px solid var(--line);gap:20px';menuBtn.textContent='×';}
+  else{links.dataset.open='0';links.removeAttribute('style');menuBtn.textContent='☰';}
+});
+document.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>{const links=document.querySelector('.links');if(window.innerWidth<=980){links.dataset.open='0';links.removeAttribute('style');menuBtn.textContent='☰';}}));
+
+// Reveal on scroll
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Lightbox
+function bindLightbox(){
+  document.querySelectorAll('.photo').forEach(photo=>photo.addEventListener('click',()=>{document.getElementById('lightboxImg').src=photo.dataset.image;document.getElementById('lightbox').classList.add('open');document.body.classList.add('no-scroll')}));
+}
+bindLightbox();
+function closeBox(){document.getElementById('lightbox').classList.remove('open');document.body.classList.remove('no-scroll')}
+document.getElementById('closeLightbox').addEventListener('click',closeBox);document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeBox()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBox()});
+
+// Cotação
+const form=document.getElementById('quoteForm');
+form?.addEventListener('submit',e=>{
+  e.preventDefault(); const data=new FormData(e.currentTarget);
+  const text=[`Olá, ${CONFIG.empresa.nome}! Gostaria de solicitar uma cotação.`,``,`Nome: ${data.get('nome')}`,`Empresa: ${data.get('empresa')}`,`WhatsApp: ${data.get('telefone')}`,`E-mail: ${data.get('email')||'-'}`,`Origem: ${data.get('origem')||'-'}`,`Destino: ${data.get('destino')||'-'}`,`Tipo de carga: ${data.get('carga')}`,`Peso/quantidade: ${data.get('peso')||'-'}`,`Detalhes: ${data.get('mensagem')||'-'}`].join('\n');
+  if(CONFIG.empresa.whatsapp){window.open(`https://wa.me/${String(CONFIG.empresa.whatsapp).replace(/\D/g,'')}?text=${encodeURIComponent(text)}`,'_blank');return;}
+  if(CONFIG.empresa.email){window.location.href=`mailto:${CONFIG.empresa.email}?subject=${encodeURIComponent('Solicitação de cotação - '+CONFIG.empresa.nome)}&body=${encodeURIComponent(text)}`;return;}
+  alert('O formulário está pronto. Para ativar o envio, abra o arquivo config.js e preencha empresa.whatsapp ou empresa.email.');
+});
+
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
 </html>
